@@ -1,31 +1,67 @@
-version: "3.8"
+version: "3.9"
 
 services:
-  backend:
-    build:
-      context: .
-      dockerfile: Dockerfile  
-    container_name: securetask-backend
+
+  backend1:
+    build: ./backend
+    container_name: backend1
     ports:
-      - "5000:5000"
-    environment:
-      - PORT=5000
-      - MONGO_URI=mongodb://mongo:27017/securetaskdb
+      - "4001:4000"
+    env_file:
+      - ./backend/.env
     depends_on:
       - mongo
     networks:
-      - securetask-net
+      - secure-net
+
+  backend2:
+    build: ./backend
+    container_name: backend2
+    ports:
+      - "4002:4000"
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - mongo
+    networks:
+      - secure-net
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "8080:80"
+    networks:
+      - secure-net
 
   mongo:
-    image: mongo:latest
-    container_name: securetask-mongo
-    restart: always
+    image: mongo
+    container_name: mongo
     ports:
       - "27017:27017"
     volumes:
-      - ./db:/data/db
+      - mongo-data:/data/db
     networks:
-      - securetask-net
+      - secure-net
+
+  nginx:
+    image: nginx:stable
+    container_name: nginx-balancer
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx:/etc/nginx/certs
+      - ./frontend:/usr/share/nginx/html
+    ports:
+      - "443:443"
+    depends_on:
+      - backend1
+      - backend2
+      - frontend
+    networks:
+      - secure-net
 
 networks:
-  securetask-net:
+  secure-net:
+
+volumes:
+  mongo-data:
