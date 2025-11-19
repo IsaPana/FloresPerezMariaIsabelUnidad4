@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SecureTask | Agregar tarea</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <h2>SecureTask</h2>
+    <ul>
+      <li><a href="tasks-pending.html">Pendientes</a></li>
+      <li><a href="tasks-done.html">Finalizadas</a></li>
+      <li><a href="#" id="logout-btn">Cerrar sesión</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="form-container">
+      <h1>Agregar nueva tarea</h1>
+      <p id="motivation" style="margin-bottom:15px; color:#5a2d82; font-weight:500;">
+  Cargando consejo motivacional...
+</p>
+      <form id="task-form">
+        <input type="text" id="title" placeholder="Título de la tarea" required>
+        <input type="text" id="description" placeholder="Descripción">
+        <input type="date" id="dueDate">
+        <button type="submit">Guardar tarea</button>
+      </form>
+      <p id="response-msg"></p>
+    </div>
+  </div>
+
+  <script src="tasks.js"></script>
+</body>
+</html>

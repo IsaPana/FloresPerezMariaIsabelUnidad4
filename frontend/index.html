@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SecureTask | Acceso</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <h1>SecureTask</h1>
+      <h2 id="form-title">Inicia sesión</h2>
+
+      <form id="auth-form">
+        <input type="text" id="username" placeholder="Usuario" required />
+        <input type="password" id="password" placeholder="Contraseña" required />
+        <button type="submit" id="submit-btn">Entrar</button>
+      </form>
+
+      <p id="toggle-text">
+        ¿No tienes cuenta? <a href="#" id="toggle-link">Regístrate aquí</a>
+      </p>
+
+      <p id="response-msg"></p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

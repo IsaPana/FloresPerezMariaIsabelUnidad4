@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SecureTask | Mis tareas</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:," />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h2>SecureTask</h2>
+    <ul>
+      <li><a href="tasks-pending.html" id="view-pending">Pendientes</a></li>
+      <li><a href="tasks-done.html" id="view-done">Finalizadas</a></li>
+      <li><a href="#" id="logout-btn">Cerrar sesión</a></li>
+    </ul>
+  </nav>
+
+  <!--  Contenedor principal -->
+  <div class="container">
+    <div class="form-container">
+      <h1>Mis tareas</h1>
+
+      <!-- Formulario para agregar tareas -->
+      <form id="task-form">
+        <input type="text" id="title" placeholder="Título de la tarea" required />
+        <input type="text" id="description" placeholder="Descripción" />
+        <input type="date" id="dueDate" />
+        <button type="submit">Agregar tarea</button>
+      </form>
+
+      <p id="response-msg"></p>
+
+      <!--  Contenedor de tarjetas -->
+      <div id="tasks-container" class="task-grid"></div>
+    </div>
+  </div>
+
+  <script src="tasks.js"></script>
+</body>
+</html>
